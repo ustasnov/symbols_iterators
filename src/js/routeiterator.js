@@ -5,17 +5,14 @@ export default class RouteIterator {
   }
 
   next() {
-    if (this.nextIdx === this.route.length) {
-      return { done: true };
+    if (this.nextIdx < this.route.length) {
+      const result = {
+        value: this.route[this.nextIdx],
+        done: false,
+      };
+      this.nextIdx += 1;
+      return result;
     }
-
-    const result = {
-      value: this.route[this.nextIdx],
-      done: false,
-    };
-
-    this.nextIdx += 1;
-
-    return result;
+    return { done: true };
   }
 }
